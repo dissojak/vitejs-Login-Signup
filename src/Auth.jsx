@@ -1,15 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Auth.css';
 
 function Auth() {
+  const [isLoginMode, setIsLoginMode] = useState(true);
+
+  useEffect(() => {
+    console.log('isLoginMode :', isLoginMode);
+  }, [isLoginMode]);
+
   const handleRegisterClick = () => {
     const container = document.getElementById('container');
     container.classList.add('active');
+    setIsLoginMode((prevMode) => !prevMode);
   };
 
   const handleLoginClick = () => {
     const container = document.getElementById('container');
     container.classList.remove('active');
+    setIsLoginMode((prevMode) => !prevMode);
   };
 
   return (
@@ -37,7 +45,7 @@ function Auth() {
           <input type="text" placeholder="Name" />
           <input type="email" placeholder="Email" />
           <input type="password" placeholder="Password" />
-          <button>Sign Up</button>
+          <button>Sign Up1S</button>
         </form>
       </div>
       <div className="form-container sign-in">
